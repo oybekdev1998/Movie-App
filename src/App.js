@@ -1,29 +1,32 @@
-import React from 'react'
-//import {Routes, Route} from 'react-router-dom'
-
-import './App.scss';
-import Header from "./components/Header/Header";
-//import MovieDetail from "./components/MovieDetail/MovieDetail"
+import React from "react";
+import {
+    BrowserRouter,
+    Routes,
+    Route,
+} from "react-router-dom";
 import Home from "./components/Home/Home";
-//import PageNotFound from "./components/PageNotFound/PageNotFound"
+import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
-
+import PageNotFound from "./components/PageNotFound/PageNotFound";
+import MovieDetail from "./components/MovieDetail/MovieDetail";
+import "./App.scss";
 
 function App() {
-  return (
-    <div className="App">
-      <Header />
-      <div className="container">
-        <Home />    
-          {/* <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/movie/:imdbID" element={<MovieDetail />} />
-            <Route path="/notfound" element={<PageNotFound />} />
-          </Routes> */}
-      </div>
-      <Footer />
-    </div>
-  );
+    return (
+        <div className="app">
+            <BrowserRouter>
+                <Header></Header>
+                <div className="container">
+                    <Routes>
+                        <Route path="/" exact element={<Home/>} />
+                        <Route path="/movie/:imdbID" element={<MovieDetail/>} />
+                        <Route path="route" element={<PageNotFound/>} />
+                    </Routes>
+                </div>
+                <Footer />
+            </BrowserRouter>
+        </div>
+    );
 }
 
 export default App;
